@@ -38,7 +38,7 @@ class MyWindow:
         listener = Listener(on_move=on_move)
         listener.start()
 
-
+    
     def setPoint(self):
         x,y,t = self.t1.get(),self.t2.get(),self.t3.get() 
 
@@ -58,3 +58,5 @@ mywin=MyWindow(window)
 window.title('Mouse Clicker')
 window.geometry("500x400+10+10")
 window.mainloop()
+
+
