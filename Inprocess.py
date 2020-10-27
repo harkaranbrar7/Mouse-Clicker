@@ -1,6 +1,7 @@
 from tkinter import *
 from pynput.mouse import Listener,Button as Butt,Controller
 import threading
+from tkinter import messagebox
 
 
 
@@ -14,14 +15,18 @@ class MyWindow:
         Label(win, text="Mouse Position",fg="white", bg="black").grid(row=1, column=0)
         Label(win, text="X").grid(row=1, column=1)
         Label(win, text="Y").grid(row=1, column=2)
+
         self.displayx = Label(win, text="") # we need this Label as a variable!
         self.displayx.grid(row=2, column=1)
+
         self.displayy = Label(win, text="") # we need this Label as a variable!
         self.displayy.grid(row=2, column=2)
+
         Button(win, text="Start Pointer", command=lambda: self.startlistener()).grid(row=2, column=0)
         Button(win, text="Stop Pointer", command=lambda: self.stopListener()).grid(row=2, column=7)
 
         Label(win, text="Enter X:Y").grid(row=3, column=0)
+
         self.t1=Entry(bd=3)
         self.t1.grid(row=3, column=1)
         self.t2=Entry(bd=3)
@@ -30,10 +35,12 @@ class MyWindow:
         Label(win, text="Time").grid(row=4, column=0)
         self.t3=Entry(bd=3)
         self.t3.grid(row=4, column=1)
+
         Button(win, text="Set & Start", command=lambda: self.setStart()).grid(row=4, column=2)
         Button(win, text="Stop", command=lambda: self.stop()).grid(row=4, column=3)
 
         Label(win, text="Button Clicked").grid(row=5, column=0)
+
         self.displayl = Label(win, text="")
         self.displayl.grid(row=5, column=2)
         self.displayh = Label(win, text="")
@@ -110,12 +117,20 @@ class MyWindow:
 
 
 
+def on_closing():
+    if messagebox.askokcancel("Quit", "Do you want to quit?"):
+        mywin.stop()
+        window.destroy()
 
 window=Tk()
 mywin=MyWindow(window)
 window.title('Mouse Clicker')
 window.geometry("500x400+10+10")
+window.protocol("WM_DELETE_WINDOW", on_closing)
 window.mainloop()
+
+
+
 
 
 
