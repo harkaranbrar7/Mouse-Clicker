@@ -16,10 +16,10 @@ class MyWindow:
         Label(win, text="X").grid(row=1, column=1)
         Label(win, text="Y").grid(row=1, column=2)
 
-        self.displayx = Label(win, text="") # we need this Label as a variable!
+        self.displayx = Label(win, text="") 
         self.displayx.grid(row=2, column=1)
 
-        self.displayy = Label(win, text="") # we need this Label as a variable!
+        self.displayy = Label(win, text="") 
         self.displayy.grid(row=2, column=2)
 
         Button(win, text="Start Pointer", command=lambda: self.startlistener()).grid(row=2, column=0)
